@@ -1,4 +1,4 @@
-tensorflow==2.9.2  # Adjust to the TensorFlow version installed
+#tensorflow==2.9.2  # Adjust to the TensorFlow version installed
 numpy==1.23.4       # Adjust to your numpy version
 pillow==10.4.0       # Adjust to your pillow version
 matplotlib==3.9.2   # Adjust to your matplotlib version

@@ -21,7 +21,7 @@ This project implements a U-Net architecture for image segmentation tasks. It al
 
 ## **Setup Instructions**
 
-### Step 1: Create a Virtual Environment with Python 3.10
+### Step 1: Create a Virtual Environment with Python 3.10 (or older, necessary for tensorflow 2.9.2)
 
 **On Windows**: 
 ```bash
@@ -39,10 +39,57 @@ source myenv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
+**On Windows**: 
+```bash
+pip install tensorflow==2.9.2
+```
+**On Mac**: 
+```bash
+pip install tensorflow-macos==2.9.2 
+```
+### Step 3: Get trained model from Google Drive
+```bash
+mkdir models
+```
 
-### Step 3: Trained model from Google Drive
 - Copy a trained model to models/<trained_model> path
 - Google Drive link: https://drive.google.com/drive/folders/1m8hvyMoGypXltUQIVVkFta0CRu_O-9yX?usp=sharing
+
+---
+
+
+## **How to Run the Project**
+### 🔹 **Option 1: Use Pretrained Model for Inference**
+
+1. **Set Up Pretrained Model**:  
+   - Create a directory to store the model:  
+     ```bash
+     mkdir models
+     ```
+   - Download the pretrained model from Google Drive and place it in the `models/<trained_model>` path.  
+     🔗 **Google Drive link**: [Pretrained Model](https://drive.google.com/drive/folders/1m8hvyMoGypXltUQIVVkFta0CRu_O-9yX?usp=sharing)
+
+2. **Run Inference**:  
+   ```bash
+   python do_inference.py --tile_size 512
+
+### 🔹 **Option 2: Train the Model by Yourself**
+1. **Slice the Images**:  
+   ```bash 
+    python slice_images.py 512 
+    ```
+2. **Train the Model**:  
+    ```bash 
+   python train_model.py 512
+    ```
+3. **Run Inference**:
+    ```bash 
+   python do_inference.py --tile_size 512 
+    ```
+4. **View Results**:  
+   - Metrics (Accuracy, Precision, Recall) will be printed.  
+   - Predictions will be saved as `predictions.png`.  
+
 ---
 
 ## **Scripts Overview**
@@ -117,25 +164,5 @@ python do_inference.py --tile_size 512
 **Output**:  
 - Metrics (Accuracy, Precision, Recall) printed to the console.  
 - Predictions visualized and saved as `predictions.png`.  
-
----
-
-## **How to Run the Project**
-
-1. **Slice the Images**:  
-   ```bash 
-    python slice_images.py 512 
-    ```
-2. **Train the Model**:  
-    ```bash 
-   python train_model.py 512
-    ```
-3. **Run Inference**:
-    ```bash 
-   python do_inference.py --tile_size 512 
-    ```
-4. **View Results**:  
-   - Metrics (Accuracy, Precision, Recall) will be printed.  
-   - Predictions will be saved as `predictions.png`.  
 
 ---
